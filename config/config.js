@@ -5,10 +5,10 @@ var fs = require('fs');
 var production = process.env.NODE_ENV === 'production';
 
 var prodConfig;
-if(production) {
-  prodConfig = JSON.parse(fs.readFileSync(__dirname + '/build-config.json'));
-  console.log('Build config loaded: ', prodConfig);
-}
+//if(production) {
+  //prodConfig = JSON.parse(fs.readFileSync(__dirname + '/build-config.json'));
+  //console.log('Build config loaded: ', prodConfig);
+//}
 
 module.exports = {
   "PRODUCTION": production,
