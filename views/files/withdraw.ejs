@@ -1,0 +1,49 @@
+<!-- views/pages/account.ejs-->
+<% include ../partials/head %>
+
+<body class="container">
+ <% include ../partials/header %>
+ <div class="row">
+  <% include ../partials/menuopen %>
+  
+  <div class="col-sm-9">
+    <div class="well">
+    
+    <a class="border-button right green" href="/withdraw-request">Request Withdraw</a>
+      
+     <h2 >Withdraw History</h5>
+     <hr>
+     
+      <div class="panel panel-default">
+       <div class="panel-heading"></div>
+       <table class="table">
+       <thead>
+        <tr>
+         <td class="col-md-2">Bits</td>
+         <td class="col-md-3">Destination Address</td>
+         <td class="col-md-6">Status</td>
+         <td class="">Created</td>
+        </tr>
+       </thead>
+       <tbody>
+        <% for(var i=0; i < user.witdrawals; i++) { %>
+		   <tr>
+		     <td><%= user.witdrawals[i].id %></td>
+		     <td><%= user.witdrawals[i].name %></td>
+		   </tr>
+		<% } %>
+		
+		 <tr>
+		     <td>test dadta</td>
+		     <td>more test tdadaskd</td>
+		     <td>test dadta</td>
+		     <td>more test tdadaskd</td>
+		   </tr>
+       </tbody>
+      </table>
+     
+ </div></div></div>
+ <% include ../partials/footer %>
+</body>
+</html>
+

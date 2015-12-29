@@ -1,0 +1,56 @@
+
+       <div id ='chatbox'>
+       <div class="panel panel-default">
+        <div class="panel-heading">Chat - Users online <span id ='usersonline'>0</span></div>
+        <div class="panel-body"><ul id="messages"></ul></div>
+         <div class="panel-footer">
+          <form id = 'chat' action="">
+           <input id="m" autocomplete="off" placeholder="Type your message here..."/><button class = 'btn btn-info'>Send</button>
+          </form>
+         </div>
+        </div> 
+       </div> 
+  
+         
+<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+  var socket = io();
+  
+  //Client submits the chat form in order to send a message.
+  $('#chat').submit(function(){
+    socket.emit('chat message', $('#m').val());
+    $('#m').val('');
+    return false;
+  });
+  
+     //Client receives a chat message and adds it to the chat box adjusting the scroll to the bottom
+  socket.on('chat message', function(msg){
+    $('#messages').append($('<li>').text(msg));
+    
+    $('.panel-body').scrollTop($('.panel-body')[0].scrollHeight);
+  });
+  
+  //Client receives notifiation that a client dissconected
+  socket.on('user disconnected', function(msg){
+  //  $('#messages').append($('<li>').text(msg));
+    $('#usersonline').html(msg);
+  });
+  
+  //Client receives notification that another client connected
+   socket.on('user connected', function(msg){
+   
+    $('#usersonline').html(msg);
+ 
+  });
+  
+   socket.on("onconnected", function(data) {
+          //  for (var i = 0; i < data.playersId.length; i++)
+            //    $("#players").append("<li>" + data.playersId[i] + "</li>");
+        });
+  
+  
+  
+  
+</script>
+  

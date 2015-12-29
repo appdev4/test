@@ -1,0 +1,337 @@
+<script type="text/javascript">
+    function logout() {
+        if (document.getElementById('logout') ) {
+            if (confirm("Are you sure you want to log out?")) {
+                localStorage.clear();
+                document.getElementById("logout").submit();
+            }
+        }
+    }
+</script>
+<form action="/logout" method="post" id='logout'></form>
+
+<div class="col-md-3">
+   <div class="panel-group" id="accordion">
+    
+    <div class="panel panel-default">
+     <div class="panel-heading">
+      <h4 class="panel-title">
+       <span class="glyphicon glyphicon-folder-close"></span>
+       <a href="/">Home</a>
+      </h4>
+     </div>
+     <% if (active_menu == 'Home') { %>
+     <div id="collapseOne" class="panel-collapse collapse in">
+	 <% } else { %>
+     <div id="collapseOne" class="panel-collapse collapse">
+     <% } %>
+      <div class="panel-body">
+       <table class="table">
+        <tr>
+         <td>
+         <span class="glyphicon glyphicon-pencil text-primary"></span>
+         <a href="/">Home</a>
+         </td>
+        </tr>
+       </table>
+      </div>
+     </div>
+    </div>
+    
+    <div class="panel panel-default">
+     <div class="panel-heading">
+      <h4 class="panel-title">
+       <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+       <span class="glyphicon glyphicon-th"></span>
+       <a href="/games">Games</a>
+      </h4>
+     </div>             
+     <% if (active_menu == 'Games') { %>
+     <div id="collapseTwo" class="panel-collapse collapse in">
+	 <% } else { %>
+     <div id="collapseTwo" class="panel-collapse collapse">
+     <% } %>
+	  <div class="panel-body">
+       <table class="table">
+        <tr>
+         <td>
+          <a href="http://www.jquery2dotnet.com">PLAY da da da</a>
+         </td>
+        </tr>
+       </table>
+      </div>
+     </div>
+    </div>
+    
+    <div class="panel panel-default">
+     <div class="panel-heading">
+      <h4 class="panel-title">
+       <span class="glyphicon glyphicon-user"></span>
+       <a href="/account">Account</a>
+      </h4>
+     </div>
+     <% if (active_menu == 'Account' || active_menu == 'deposit') { %>
+     <div id="collapseThree" class="panel-collapse collapse in">
+	 <% } else { %>
+     <div id="collapseThree" class="panel-collapse collapse">
+     <% } %>      
+     <div class="panel-body">
+     <form action="/logout" method="post" id='logout'></form>
+       <table class="table">
+        <tr>
+         <td>
+          <a href="/deposit">Deposit</a>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="/withdraw">Withdraw</a>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="/transfer">Transfer</a>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a href="/notifications">Notifications</a> <span class="label label-info">5</span>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <span class="glyphicon glyphicon-trash text-danger"></span>
+          <a href="http://www.jquery2dotnet.com" class="text-danger">Delete Account</a>
+         </td>
+        </tr>
+        <tr>
+         <td>
+          <a onclick="logout();">
+           Logout
+          </a>
+         </td>
+        </tr>
+       </table>
+      </div>
+     </div>
+    </div>
+     
+     <div class="panel panel-default">
+      <div class="panel-heading">
+       <h4 class="panel-title">
+        <span class="glyphicon glyphicon-file"></span>
+        <a href="/reports">Reports</a>
+       </h4>
+      </div>
+      <% if (active_menu == 'Reports') { %>
+     <div id="collapseFour" class="panel-collapse collapse in">
+	 <% } else { %>
+     <div id="collapseFour" class="panel-collapse collapse">
+     <% } %>
+       <div class="panel-body">
+        <table class="table">
+         <tr>
+          <td>
+           <span class="glyphicon glyphicon-usd"></span>
+           <a href="http://www.jquery2dotnet.com">Sales</a>
+          </td>
+         </tr>
+        </table>
+       </div>
+      </div>
+     </div>
+            
+    </div>
+</div>
+   
+   
+   <!--             <div class="panel-group" id="accordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                           <span class="glyphicon glyphicon-folder-close">
+                            </span><a href="/">Home</a>
+                        </h4>
+                    </div>
+                      
+                        <% if (active_menu == 'home') { %>
+					             <div id="collapseOne class="panel-collapse collapse in">
+						<% } else { %>
+                                 <div id="collapseOne" class="panel-collapse collapse">
+                        <% } %>
+                      
+                      <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-pencil text-primary"></span><a href="/">Home</a>
+                                    </td>
+                                </tr>
+                                                               
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-flash text-success"></span><a href="/About">About</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-file text-info"></span><a href="/faq">Faq</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-comment text-success"></span><a href="http://www.jquery2dotnet.com">Comments</a>
+                                        <span class="badge">42</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
+                            </span><a href="/games">Games</a>
+                        </h4>
+                    </div>
+                      <% if (active_menu == 'games') { %>
+					             <div id="collapseTwo" class="panel-collapse collapse in">
+						<% } else { %>
+                                 <div id="collapseTwo" class="panel-collapse collapse">
+                        <% } %>
+                      
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Play X</a> <span class="label label-success">$ 320</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Play Y</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">Play Z</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="http://www.jquery2dotnet.com">PLAY da da da</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                           
+                            <span class="glyphicon glyphicon-user">
+                            </span><a href="/account">Account</a>
+                        </h4>
+                    </div>
+                 
+                        <% if (active_menu == 'account' || active_menu == 'deposit') { %>
+					             <div id="collapseThree" class="panel-collapse collapse in">
+						<% } else { %>
+                                 <div id="collapseThree" class="panel-collapse collapse">
+                        <% } %>
+                                           
+                        <div class="panel-body">
+                            <table class="table">
+                               
+                                <tr>
+                                    <td>
+                                        <a href="/deposit">Deposit</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/withdraw">Withdraw</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/transfer">Transfer</a>
+                                    </td>
+                                </tr>
+                                   <tr>
+                                    <td>
+                                        <a href="/notifications">Notifications</a> <span class="label label-info">5</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/change_password">Change Password</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="/set2fa">2 Factor Authentication</a>
+                                    </td>
+                                </tr>
+                          
+                                 
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
+                                            Delete Account</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <span class="glyphicon glyphicon-file">
+                            </span><a href="/reports">Reports</a>
+                        </h4>
+                    </div>
+                      <% if (active_menu == 'reports') { %>
+					             <div id="collapseFour" class="panel-collapse collapse in">
+						<% } else { %>
+                                 <div id="collapseFour" class="panel-collapse collapse">
+                        <% } %>
+                      
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-usd"></span><a href="http://www.jquery2dotnet.com">Sales</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-user"></span><a href="http://www.jquery2dotnet.com">Customers</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Products</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-shopping-cart"></span><a href="http://www.jquery2dotnet.com">Shopping Cart</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+            </div>
+            
+            -->
+             

@@ -1,0 +1,103 @@
+<!-- views/partials/header.ejs -->
+<header>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Sitename</a>
+        </div>
+        <center>
+                 
+            <div class="navbar-collapse collapse" id="navbar-main">
+                <ul class="nav navbar-nav">
+                
+                   <% if (typeof active_menu === 'undefined') { %>
+                  <li class="active">
+                  <% }else if (active_menu === 'Home') {  %>
+                    <li class="active">
+                     <% }else { %> <li> <% } %>
+                    <a href="/">Home</a>
+                    </li>
+                    
+                        <% if (!locals.user) { %>
+                          <li class="<%= locals.active_menu === 'LoginRegister' ? 'active' : '' %>">
+						  <a href="/login_register">Login - Register</a>      
+						<% } else{ %>
+						  <li class="<%= active_menu === 'Account' ? 'active' : '' %>">
+						  <a href="/account">Account</a>
+						<% } %>
+                     <li class="<%= locals.active_menu === 'Play' ? 'active' : '' %>">
+                     <a href="/play">Play</a>
+                    </li>
+                     <li class="<%= locals.active_menu === 'About' ? 'active' : '' %>">
+                     <a href="#">About</a>
+                    </li>
+                     <li class="<%= locals.active_menu === 'Faq' ? 'active' : '' %>">
+                     <a href="#">Faq</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Action</a>
+                            </li>
+                            <li><a href="#">Another action</a>
+                            </li>
+                            <li><a href="#">Something else here</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">Separated link</a>
+                            </li>
+                            <li class="divider"></li>
+                            <li><a href="#">One more separated link</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                 <% if (!locals.user) { %>
+                              
+                <form id = 'formone' action="/login" class="navbar-form navbar-right" style = "display:block" method="post">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="username" placeholder="Username">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" name="password" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-default">Sign In</button>
+                </form>
+               <% } else{ %>
+               
+               <div class="user-login">
+           
+            <div class="balance-bits">
+                <span>Bits: </span>
+                <span class="balance"><%= locals.user.balance_satoshis %></span>
+            </div>
+            <div class="username">
+                <a href="/account"><%= locals.user ? locals.user.username : '' %></a>
+            </div>
+           
+            
+        </div>
+        <% } %>
+            </div>
+        </center>
+    </div>
+</div>
+
+
+<script>$("#formone").submit(function(e) {
+
+    var $this = $(this); // `this` refers to the current form element
+    $.post(
+        $this.attr("action"), // Gets the URL to sent the post to
+        $this.serialize(), // Serializes form data in standard format
+        function(data) { /** code to handle response **/ },
+        "json" // The format the response should be in
+    );
+});</script>
+
+</header>

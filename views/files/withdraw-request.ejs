@@ -1,0 +1,68 @@
+<!-- views/pages/account.ejs-->
+<% include ../partials/head %>
+
+<body class="container">
+ <% include ../partials/header %>
+ <div class="row">
+  <% include ../partials/menuopen %>
+   
+   <div class="col-sm-9">
+    <div class="well">
+       <% if(locals.warning){ %>
+	   <div class="alert alert-danger" role="alert">
+	      <%= locals.warning %>
+	      </div>
+	   <% } %>
+	   
+	      <% if(locals.success){ %>
+	   <div class="alert alert-success" role="alert">
+	      <%= locals.warning %>
+	      </div>
+	   <% } %>
+     <h1>Request Withdrawal Of Bitcoin</h1>
+     
+       <p class="small">
+                **The minimum amount for a withdrawal is <%= locals.miningFeeBits + 100 %> bits. You will receive <%= locals.miningFeeBits + 100 %> bits less than what you withdraw,
+                as we use that <%= locals.miningFeeBits + 100 %> bits to go towards mining fee. As required, we will as well chip in with our money to
+                help expedite confirmation time.
+            </p>
+
+            <p>
+                <strong>Note:</strong> Your withdrawal will be sent from the hot wallet, do not withdraw to any site
+                that uses the sending address, or returns to sender, because any returns will probably be credited to a different player.
+            </p>
+            
+       <label for="amount">Bits amount</label>
+      <form id="recover-form" action="/withdraw-request" method="post" role="form">
+      <div class="input-group">
+       <span class="input-group-addon">Address</span>
+       <input type="text" name="destination" id="destination" tabindex="1" class="form-control" placeholder="(BTC Destination Address)" value="" required>
+      </div>
+      <div class="input-group">
+       <span class="input-group-addon">Amount</span>
+       <input type="number" name="amount" id="amount" tabindex="1" class="form-control size" placeholder="<%= locals.miningFeeBits + 100 %>" min="<%= locals.miningFeeBits + 100 %>" step=".01" required>
+      </div>
+      <div class="input-group">
+       <span class="input-group-addon">Authorise</span>
+       <input type="password" name="password" id="password" tabindex="1" class="form-control size" placeholder="(Account Password)" autocomplete="off" value="">
+      </div>
+  	  <div class="form-group">
+	   <div class="row">
+		<div class="col-sm-6">
+		 <input type="submit" name="withdraw-submit" id="withdraw-submit" tabindex="4" class="form-control btn-login btn btn-withdraw" value="Withdraw">
+		</div>
+	   </div>
+	  </div>
+	  <input type="hidden" name="withdrawal_id" value="<%= locals.id %>" />
+	  <a href="/withdraw" class="btn-login btn back-btn ">Back</a>
+	 </form>
+    
+   </div>
+  </div>
+ </div>
+ <% include ../partials/footer %>
+ 
+
+</body>
+</html>
+
