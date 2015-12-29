@@ -12,7 +12,7 @@ var express = require('express')
 var Chat = require('./server/chat');
 var database = require('./server/database');
 var lib = require('./server/lib');
-var config = require('../config/conjkkjhkjfig');
+var config = require('./config/config');
 
 var app = express();
 
