@@ -23,7 +23,7 @@ app.locals.miningFeeBits = config.MINING_FEE/100;
 //configuration
 app.use(express.cookieParser());
 //test
-app.use(function(req, res, next) {
+app.use(function(req, res, next) {//ds
 	
     var sessionId = req.cookies.id;
 
