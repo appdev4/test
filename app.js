@@ -26,7 +26,7 @@ app.use(express.cookieParser());
 app.use(function(req, res, next) {//ds
 	
     var sessionId = req.cookies.id;
-
+//hjhgjh
     console.log("okay here" + sessionId );
     
     if (!sessionId) {
