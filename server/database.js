@@ -3,7 +3,7 @@ var uuid = require('uuid');
 var assert = require('assert');
 var passwordHash = require('password-hash');
 var lib = require("../server/lib");
-var databaseUrl = "postgres://testuser:testuser@localhost:5432/testdatabase";
+var databaseUrl = config.DATABASE_URL;
 
 
 if (!databaseUrl)
