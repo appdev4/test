@@ -3,8 +3,9 @@ var uuid = require('uuid');
 var assert = require('assert');
 var passwordHash = require('password-hash');
 var lib = require("../server/lib");
-var databaseUrl = config.DATABASE_URL;
+var config = require('../config/config');
 
+var databaseUrl = config.DATABASE_URL;
 
 if (!databaseUrl)
     throw new Error('must set DATABASE_URL environment var');
